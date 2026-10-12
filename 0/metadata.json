@@ -1,0 +1,66 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M4QDC22EK5TKCB0K9XXDAB3R",
+  "session_id": "c4392f7f-4c29-4556-8ae3-162bdcc85870",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-12T06:39:04.840873Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "save_step_count": 1,
+  "files_touched": [
+    "server/src/gemma.ts",
+    "server/src/index.ts",
+    "web/src/api.ts",
+    "web/src/main.ts",
+    "web/src/store.ts"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "245fde7cebb1",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 8,
+    "cache_creation_tokens": 19356,
+    "cache_read_tokens": 158290,
+    "output_tokens": 726,
+    "api_call_count": 4
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-12T06:39:04.835019Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 7,
+    "total_committed": 0,
+    "total_lines_changed": 7,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 26,
+      "user_lines_removed": 7,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "server/src/gemma.ts": 1,
+        "server/src/index.ts": 4,
+        "server/src/starter.ts": 14,
+        "web/src/api.ts": 2,
+        "web/src/main.ts": 3,
+        "web/src/store.ts": 2
+      },
+      "user_removed_per_file": {
+        "server/src/gemma.ts": 1,
+        "server/src/index.ts": 3,
+        "web/src/api.ts": 2,
+        "web/src/main.ts": 1
+      }
+    }
+  ]
+}
