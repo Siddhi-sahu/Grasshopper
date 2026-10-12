@@ -102,6 +102,11 @@ h2 { font-size: 1.15rem; }
 /* ---------- form + buttons ---------- */
 .start { display: grid; gap: 10px; }
 .start label { font-weight: 800; }
+.place-row { display: flex; gap: 10px; }
+.place-row input { flex: 1; min-width: 0; }
+.btn.locate { padding: 10px 14px; font-size: 18px; }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+.locate-status { margin: -4px 0 0; font-size: 0.85rem; min-height: 1.3em; }
 input[type="text"], input:not([type]) {
   font: inherit;
   padding: 12px 14px;

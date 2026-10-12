@@ -13,13 +13,17 @@ npm run dev             # server :3001 + web :5173 (also on LAN for phone testin
 npm run typecheck
 ```
 
-Config lives in `.env` (see `.env.example`): `PORT`, `OLLAMA_URL`, `GEMMA_MODEL`.
+Config lives in `.env` (see `.env.example`): `PORT`, `OLLAMA_URL`, `GEMMA_MODEL`, and for hosted
+Gemma `GEMMA_PROVIDER=gemini`, `GEMINI_API_KEY`, `GEMINI_GEMMA_MODEL` (default `gemma-4-26b-a4b-it`).
+Render: build `npm ci && npm run build`, start `npm start`; Express serves `web/dist`.
 
 ## Layout
 
 - `server/` Express 5 + TypeScript (ESM, NodeNext, run with tsx)
-  - `src/gemma.ts`: `GemmaClient` interface; `ollamaGemma` is the only impl. A hosted Gemma
-    (AI Studio, DigitalOcean) is a new impl of the same interface.
+  - `src/gemma.ts`: `GemmaClient` interface; `ollamaGemma` (local) and `geminiGemma` (Google
+    AI Studio). Hosted Gemma 4 errors/times out with `responseJsonSchema` or `systemInstruction`,
+    so both ride in the prompt; it also 500s intermittently, hence one retry in `quests.ts`.
+  - `src/place.ts`: `GET /api/place?lat&lon` → city via OpenStreetMap Nominatim (coords rounded).
   - `src/quests.ts`: prompt + zod schema, passed to Ollama as a JSON-schema `format`.
     Difficulty is assigned by position (`LADDER`): Gemma miscounts the 2/2/1 split.
   - `src/index.ts`: `POST /api/quests { place? }` → `{ quests }`; 502 if Ollama fails.

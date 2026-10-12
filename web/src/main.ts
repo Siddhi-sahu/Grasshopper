@@ -1,5 +1,5 @@
 import "./style.css";
-import { fetchQuests } from "./api";
+import { currentPosition, fetchPlace, fetchQuests } from "./api";
 import { clearHunt, loadHunt, saveHunt, type Hunt, type QuestProgress } from "./store";
 import { verify, warmUp, type ModelStatus } from "./verify";
 
@@ -52,7 +52,11 @@ function renderHome(error?: string): string {
         <p class="tagline">5 tiny side quests. go outside. come back with proof.</p>
         <form id="start" class="start">
           <label for="place">where are you walking? <span class="muted">(optional)</span></label>
-          <input id="place" name="place" placeholder="e.g. Jhansi, India" maxlength="80" autocomplete="off" />
+          <div class="place-row">
+            <input id="place" name="place" placeholder="e.g. Jhansi, India" maxlength="80" autocomplete="off" />
+            <button class="btn locate" type="button" data-action="locate" aria-label="use my location">📍</button>
+          </div>
+          <p class="locate-status muted" aria-live="polite"></p>
           <button class="btn primary" type="submit">hop to it ✦</button>
         </form>
         ${error ? `<p class="error" role="alert">${esc(error)}</p>` : ""}
@@ -70,6 +74,7 @@ function renderLoading(): string {
       <div class="window-body center">
         <div class="mascot hop" aria-hidden="true">🦗</div>
         <p class="tagline">Gemma is dreaming up your quests…</p>
+        <p class="footnote">this can take up to a minute. stretch your legs!</p>
       </div>
     </section>
   </main>`;
@@ -238,6 +243,23 @@ async function trustQuest(questId: string) {
   render();
 }
 
+// Only the city name leaves the browser's hands for Gemma; coordinates are rounded to ~1km.
+async function locate(button: HTMLButtonElement) {
+  const input = app.querySelector<HTMLInputElement>("#place");
+  const status = app.querySelector<HTMLElement>(".locate-status");
+  if (!input || !status) return;
+  button.disabled = true;
+  status.textContent = "finding you…";
+  try {
+    const { coords } = await currentPosition();
+    input.value = await fetchPlace(coords.latitude, coords.longitude);
+    status.textContent = "only your city is shared with Gemma";
+  } catch (err) {
+    status.textContent = (err as Error).message;
+  }
+  button.disabled = false;
+}
+
 async function newHunt() {
   if (hunt && hunt.quests.some((q) => !q.found) && !confirm("Abandon this hunt and start a new one?")) return;
   await clearHunt();
@@ -264,6 +286,7 @@ app.addEventListener("click", (e) => {
   if (!button) return;
   if (button.dataset.action === "trust") trustQuest(button.dataset.id!);
   if (button.dataset.action === "new") newHunt();
+  if (button.dataset.action === "locate") locate(button);
 });
 
 warmUp((status) => {

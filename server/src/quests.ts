@@ -2,10 +2,13 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { GemmaClient } from "./gemma.js";
 
+// Hosted Gemma 4 runs long, so trim instead of rejecting.
+const clip = (max: number) => z.string().min(1).transform((s) => (s.length > max ? `${s.slice(0, max - 1).trimEnd()}…` : s));
+
 const QuestSchema = z.object({
-  title: z.string().min(1).max(80),
-  hint: z.string().min(1).max(160),
-  visual: z.string().min(1).max(50),
+  title: clip(80),
+  hint: clip(160),
+  visual: clip(60),
   difficulty: z.enum(["easy", "medium", "hard"]),
 });
 
@@ -37,8 +40,21 @@ Return JSON: {"quests": [{"title", "hint", "visual", "difficulty"}]}.`;
 }
 
 export async function generateQuests(gemma: GemmaClient, place?: string): Promise<Quest[]> {
-  const schema = z.toJSONSchema(ResponseSchema);
-  const raw = await gemma.generateJson(SYSTEM, userPrompt(place), schema);
-  const parsed = ResponseSchema.parse(JSON.parse(raw));
-  return parsed.quests.map((q, i) => ({ ...q, difficulty: LADDER[i], id: randomUUID() }));
+  const { $schema: _, ...schema } = z.toJSONSchema(ResponseSchema, { io: "input" });
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const raw = await gemma.generateJson(SYSTEM, userPrompt(place), schema);
+      const parsed = ResponseSchema.parse(JSON.parse(raw));
+      return toQuests(parsed.quests);
+    } catch (err) {
+      lastError = err;
+      console.error(`quest attempt ${attempt + 1} failed:`, err);
+    }
+  }
+  throw lastError;
+}
+
+function toQuests(quests: z.infer<typeof ResponseSchema>["quests"]): Quest[] {
+  return quests.map((q, i) => ({ ...q, difficulty: LADDER[i], id: randomUUID() }));
 }
