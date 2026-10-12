@@ -1,0 +1,68 @@
+<pasted_content id="fa48">
+Also on the first page , the title is a weirdly formatted with grasshoppe in one line and r in next. We can put grass together and hopper in the next line.
+Yeah keep updating the dev agent session. How do u actually do that. And looks like entire is set up?
+Yes, do these “  Before you switch, I can do two things:
+1. Write a CLAUDE.md handoff note in the repo. It would cover the stack, how to run it, the decisions so far and what's next, so a fresh session picks up immediately.2. Update the DEV agent session (id 768) with the build steps from this session, since Entire missed them.Should I do both? I'll also post the CLIP results here when the test finishes. If you switch first, the test results will still be in this session.
+
+What have we done and achieved till now, what are the next steps.
+Tips on how do i write this, also give me starting answer for these - Upload Cover Image
+Use a ratio of 1000:420 for best results.
+🍌 Generate ImageCover Video Link
+Add up to 4 tags
+Maximum 4 selections
+Selected items:
+# devchallenge
+# hf26challenge
+
+
+BoldCMD + B
+ItalicCMD + I
+LinkCMD + K
+Ordered list
+Unordered list
+Heading
+Quote
+Code
+Code block
+EmbedCMD + SHIFT + K
+Upload image
+Publishing Tips
+Ensure your post has a cover image set to make the most of the home feed and social media platforms.
+Share your post on social media platforms or with your co-workers or local communities.
+Ask people to leave questions for you in the comments. It's a great way to spark additional discussion describing personally why you wrote it or why people might find it helpful.
+
+*This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 1: Touch Grass](https://dev.to/challenges/hacktoberfest-week1-2026-10-05)*
+
+## What I Built
+<!-- What does it do, and how does it get people off the screen and into the world?  Who is it for? -->
+
+## Demo
+<!-- Share a deployed link or a video demo. -->
+
+## Code
+<!-- Show us the code!  You can embed a GitHub repo directly into your post. -->
+
+## How I Built It
+<!-- Which open-source AI did you use (open-weight models, agent harnesses, frameworks, local inference), and how is your project built around it? -->
+
+## Why Does Open Innovation Matter?
+<!-- Why does open innovation matter for what you built?  What did it make possible that a closed API wouldn't? -->
+
+## My Agent Session
+<!-- Optional, but judges love it.  Save your session with DevRelay and embed it with the agent_session tag (see the challenge page), or link to it. -->
+
+## Prize Categories
+<!-- Which partner categories are you entering?  List every one that applies, or remove this section. -->
+
+<!-- Team Submissions: Please pick one member to publish the submission and credit teammates by listing their DEV usernames directly in the body of the post. -->
+
+<!-- Thanks for participating! -->
+</pasted_content id="fa48">
+
+---
+
+<pasted_content id="fa48">
+
+what do u mean by  Use your phone at http://192.168.29.186:5173 on Wi-Fi. 
+How can we auto-detect location. And  deploy on Render with hosted Gemma. And what do u actually mean by hosted gemma. And on render we will host the backend and frontend?
+</pasted_content id="fa48">
