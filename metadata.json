@@ -1,0 +1,34 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M4QBY6B40VDJEE1K0M59M31R",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".env.example",
+    "CLAUDE.md",
+    "package.json",
+    "server/src/gemma.ts",
+    "server/src/index.ts",
+    "server/src/quests.ts",
+    "web/src/api.ts",
+    "web/src/main.ts",
+    "web/src/style.css"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 170,
+    "cache_creation_tokens": 415044,
+    "cache_read_tokens": 8794846,
+    "output_tokens": 71127,
+    "api_call_count": 84
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "cli_version": "0.11.3",
+  "checkpoint_id": "01M4QBY6B40VDJEE1K0M59M31R",
+  "session_id": "e2a3b75c-1783-482e-a05c-ec4f5022b389",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-12T06:14:01.828333Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".env.example",
+    "CLAUDE.md",
+    "package.json",
+    "server/src/gemma.ts",
+    "server/src/index.ts",
+    "server/src/quests.ts",
+    "web/src/api.ts",
+    "web/src/main.ts",
+    "web/src/style.css"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "884e44656398",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 170,
+    "cache_creation_tokens": 415044,
+    "cache_read_tokens": 8794846,
+    "output_tokens": 71127,
+    "api_call_count": 84
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01Y9Jaam6nWwyZ25sM6p2pVA",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "devrelay-sessions"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "884e44656398",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 50,
+        "end": 51,
+        "entry_ids": [
+          "bc699b48-0ac8-4987-8102-0e632dc3d8f2"
+        ],
+        "tool_use_id": "toolu_01Y9Jaam6nWwyZ25sM6p2pVA"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01Y9Jaam6nWwyZ25sM6p2pVA"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: devrelay-sessions",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_01XEqWrU1iQkmsm5p1Vgu8AK",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "anthropic-skills:chrome-browser"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "884e44656398",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 211,
+        "end": 212,
+        "entry_ids": [
+          "db8842af-b3d1-4d0d-9b79-5646b34cd4e7"
+        ],
+        "tool_use_id": "toolu_01XEqWrU1iQkmsm5p1Vgu8AK"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01XEqWrU1iQkmsm5p1Vgu8AK"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: anthropic-skills:chrome-browser",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-12T06:14:01.805388Z",
+    "agent_lines": 19,
+    "agent_removed": 9,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 11,
+    "total_committed": 19,
+    "total_lines_changed": 39,
+    "agent_percentage": 71.7948717948718,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 163,
+      "user_lines_removed": 11,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "server/src/gemma.ts": 38,
+        "server/src/index.ts": 37,
+        "server/src/place.ts": 32,
+        "server/src/quests.ts": 6,
+        "web/src/api.ts": 21,
+        "web/src/main.ts": 24,
+        "web/src/style.css": 5
+      },
+      "user_removed_per_file": {
+        "server/src/gemma.ts": 2,
+        "server/src/index.ts": 5,
+        "server/src/quests.ts": 2,
+        "web/src/main.ts": 2
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 175,
+      "agent_lines_removed": 16
+    }
+  ]
+}
