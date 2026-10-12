@@ -75,8 +75,8 @@ h1 {
   color: var(--grass);
   text-shadow: 3px 3px 0 var(--ink);
   text-align: center;
-  overflow-wrap: anywhere;
 }
+h1 span { display: block; }
 h2 { font-size: 1.15rem; }
 .tagline { text-align: center; font-weight: 700; margin: 8px 0 20px; }
 .hint { color: var(--muted); margin: 6px 0 16px; }

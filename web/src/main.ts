@@ -48,7 +48,7 @@ function renderHome(error?: string): string {
       ${titlebar("grasshopper.exe")}
       <div class="window-body">
         <div class="mascot" aria-hidden="true">🦗</div>
-        <h1>Grasshopper</h1>
+        <h1><span>Grass</span><span>hopper</span></h1>
         <p class="tagline">5 tiny side quests. go outside. come back with proof.</p>
         <form id="start" class="start">
           <label for="place">where are you walking? <span class="muted">(optional)</span></label>
