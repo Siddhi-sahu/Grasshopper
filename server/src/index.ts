@@ -5,6 +5,7 @@ import { z } from "zod";
 import { gemmaFromEnv } from "./gemma.js";
 import { reversePlace } from "./place.js";
 import { generateQuests } from "./quests.js";
+import { starterQuests } from "./starter.js";
 
 const PORT = Number(process.env.PORT ?? 3001);
 const gemma = gemmaFromEnv();
@@ -25,10 +26,10 @@ app.post("/api/quests", async (req, res) => {
   }
   try {
     const quests = await generateQuests(gemma, body.data.place || undefined);
-    res.json({ quests });
+    res.json({ quests, source: "gemma" });
   } catch (err) {
-    console.error("quest generation failed:", err);
-    res.status(502).json({ error: "Gemma couldn't write quests right now. Try again in a moment." });
+    console.error("quest generation failed, serving starter pack:", err);
+    res.json({ quests: starterQuests(), source: "starter" });
   }
 });
 

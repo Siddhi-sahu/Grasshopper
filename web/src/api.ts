@@ -1,6 +1,6 @@
 import type { Quest } from "./store";
 
-export async function fetchQuests(place?: string): Promise<Quest[]> {
+export async function fetchQuests(place?: string): Promise<{ quests: Quest[]; source: "gemma" | "starter" }> {
   const res = await fetch("/api/quests", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -8,7 +8,7 @@ export async function fetchQuests(place?: string): Promise<Quest[]> {
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(body.error ?? `Request failed (${res.status})`);
-  return body.quests;
+  return { quests: body.quests, source: body.source ?? "gemma" };
 }
 
 export async function fetchPlace(lat: number, lon: number): Promise<string> {

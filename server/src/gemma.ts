@@ -43,7 +43,7 @@ export const geminiGemma: GemmaClient = {
     const res = await fetch(`${GEMINI_URL}/${GEMINI_GEMMA_MODEL}:generateContent`, {
       method: "POST",
       headers: { "content-type": "application/json", "x-goog-api-key": key },
-      signal: AbortSignal.timeout(45_000),
+      signal: AbortSignal.timeout(30_000),
       body: JSON.stringify({
         // Hosted Gemma 4 times out with responseJsonSchema, so the schema rides in the prompt
         // and the caller validates.

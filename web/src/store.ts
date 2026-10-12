@@ -21,6 +21,8 @@ export interface QuestProgress extends Quest {
 export interface Hunt {
   id: string;
   place?: string;
+  /** "starter" = hand-written fallback because Gemma was unreachable */
+  source?: "gemma" | "starter";
   startedAt: number;
   quests: QuestProgress[];
 }

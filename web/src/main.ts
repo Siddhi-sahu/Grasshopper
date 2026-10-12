@@ -152,6 +152,7 @@ function renderHunt(h: Hunt): string {
           <div class="meter-fill" style="width:${(found / h.quests.length) * 100}%"></div>
         </div>
         <p class="meter-label">${found}/${h.quests.length} found${done ? " ✦" : " · put the phone away between finds"}</p>
+        ${h.source === "starter" ? `<p class="muted starter-note">Gemma was busy, so this is a hand-written starter pack. Try a new hunt later for AI quests.</p>` : ""}
       </div>
     </section>
     ${
@@ -183,10 +184,11 @@ async function startHunt(place: string) {
   view = { name: "loading" };
   render();
   try {
-    const quests = await fetchQuests(place || undefined);
+    const { quests, source } = await fetchQuests(place || undefined);
     hunt = {
       id: crypto.randomUUID(),
       place: place || undefined,
+      source,
       startedAt: Date.now(),
       quests: quests.map((q) => ({ ...q, found: false })),
     };
